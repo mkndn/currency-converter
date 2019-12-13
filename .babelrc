@@ -1,14 +1,25 @@
 {
-  "presets": [
-    [
-      "next/babel",
-      {
-        "preset-env": {},
-        "transform-runtime": {},
-        "styled-jsx": {},
-        "class-properties": {}
-      }
-    ]
-  ],
-  "plugins": ["transform-class-properties"]
+  "env": {
+    "development": {
+      "presets": [
+        [
+          "next/babel",
+          {
+            "preset-env": {},
+            "transform-runtime": {},
+            "styled-jsx": {},
+            "class-properties": {}
+          }
+        ]
+      ],
+      "plugins": ["transform-class-properties"]
+    },
+    "production": {
+      "presets": ["next/babel"],
+      "plugins": ["transform-class-properties"]
+    },
+    "test": {
+      "presets": [["next/babel", { "preset-env": { "modules": "commonjs" } }]]
+    }
+  }
 }

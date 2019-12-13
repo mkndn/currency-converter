@@ -1,0 +1,28 @@
+{
+  "default": {
+    "api_base": "https://api.exchangeratesapi.io"
+  },
+  "development": {
+    "env": "development",
+    "port": "3000",
+    "default-currency": "EUR",
+    "origins": "http://localhost"
+  },
+  "production": {
+    "env": "production",
+    "port": "8080",
+    "default-currency": "EUR",
+    "origins": "http://localhost"
+  },
+  "staging": {
+    "env": "staging",
+    "port": "3000",
+    "default-currency": "EUR",
+    "origins": "http://localhost"
+  },
+  "testing": {
+    "env": "dev",
+    "default-currency": "EUR",
+    "origins": "http://localhost"
+  }
+}
