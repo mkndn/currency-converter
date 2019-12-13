@@ -1,4 +1,4 @@
-# nextjs_currency_converter
+# currency_converter
 This project serves the frontend UI of the currency converter spring application available [here](https://github.com/mani0608/sb_currency_converter)
 
 # features
