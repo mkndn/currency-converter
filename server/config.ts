@@ -1,14 +1,45 @@
-import merge from 'lodash/merge';
 
-const port = parseInt(process.env.PORT || '3000', 10);
-const env: string = process.env.NODE_ENV || 'production';
-const config = require('./config.json');
 
-const defaultConfig: any = config.default;
-const envConfig: any = config[env];
+const env: string = process.env.NODE_ENV; // 'dev' or 'test'
 
-const appConfig: any = merge(defaultConfig, envConfig);
-appConfig.port = port;
-appConfig.env = env;
+const development: any = {
+    app: {
+        env: 'development',
+        api_base: 'https://api.exchangeratesapi.io',
+        port: parseInt(process.env.DEV_APP_PORT || '3000')
+    },
 
-export default appConfig;
+};
+const test: any = {
+    app: {
+        env: 'test',
+        api_base: 'https://api.exchangeratesapi.io',
+        port: parseInt(process.env.TEST_APP_PORT || '3000')
+    },
+
+};
+
+const staging: any = {
+    app: {
+        env: 'staging',
+        api_base: 'https://api.exchangeratesapi.io',
+        port: parseInt(process.env.TEST_APP_PORT || '8080')
+    },
+}
+
+const production = {
+    app: {
+        env: 'production',
+        api_base: 'https://api.exchangeratesapi.io',
+        port: parseInt(process.env.TEST_APP_PORT || '8080')
+    },
+}
+
+const config: any = {
+    development,
+    test,
+    staging,
+    production
+};
+
+export default config[env];

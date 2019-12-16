@@ -4,9 +4,9 @@ import graphqlHTTP from 'express-graphql';
 import schema from './schema';
 import path from 'path';
 import * as bodyParser from 'body-parser';
-import appConfig from './config';
+import * as config from './config';
 
-const dev = appConfig.env !== 'production';
+const dev = (config as any).env !== 'production';
 const app = next({ dev });
 const handler = app.getRequestHandler();
 
@@ -53,9 +53,10 @@ app
       return handler(req, res);
     });
 
-    server.listen(appConfig.port, () => {
+    //appConfig.port
+    server.listen(3000, () => {
       // tslint:disable-next-line:no-console
-      console.log(`Express listening to port ${appConfig.port}`);
+      console.log(`Express listening to port ${JSON.stringify(config)}`);
     });
   })
   .catch(ex => {

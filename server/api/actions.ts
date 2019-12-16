@@ -1,11 +1,11 @@
-import appConfig from '../config';
+import * as config from '../config';
 import fetch from 'node-fetch';
 import DataLoader from 'dataloader';
 
 import * as es6 from 'es6-promise';
 (es6 as any).polyfill();
 
-const BASE_URI = appConfig.api_base;
+const BASE_URI = (config as any);
 
 const cacheMap = new Map();
 
