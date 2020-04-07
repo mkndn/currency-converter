@@ -5,7 +5,9 @@
         [
           "next/babel",
           {
-            "preset-env": {},
+            "preset-env": {
+              "modules": "commonjs"
+            },
             "transform-runtime": {},
             "styled-jsx": {},
             "class-properties": {}

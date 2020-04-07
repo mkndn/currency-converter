@@ -2,6 +2,11 @@ const withCSS = require("@zeit/next-css");
 
 module.exports = withCSS({
   webpack: (config, options) => {
+
+    config.resolve.modules = [
+      __dirname,
+      'node_modules'
+    ]
     config.module.rules.push({
       test: /\.js$/,
       exclude: /node_modules/,

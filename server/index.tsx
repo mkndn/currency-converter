@@ -1,10 +1,13 @@
 import express from 'express';
 import next from 'next';
 import graphqlHTTP from 'express-graphql';
-import schema from './schema';
+//import schema from './schema';
 import path from 'path';
 import * as bodyParser from 'body-parser';
-import appConfig from './config';
+//import appConfig from './config';
+
+const schema = require(path.join(__dirname, '/schema.jsx'));
+const appConfig = require(path.join(__dirname, '/config.js')).default;
 
 const dev = appConfig.env !== 'production';
 const app = next({ dev });

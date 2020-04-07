@@ -1,7 +1,6 @@
 import { GraphQLSchema, GraphQLObjectType, GraphQLList, GraphQLString } from 'graphql';
-import appConfig from './config';
 import CurrencyRateType from './api/types/currency-rate';
-import { fetchRates, ratesLoader } from './api/actions';
+import { fetchAllRates, ratesLoader } from './api/actions';
 
 const QueryType = new GraphQLObjectType({
     name: 'Query',
@@ -10,7 +9,7 @@ const QueryType = new GraphQLObjectType({
     fields: () => ({
         latestRates: {
             type: CurrencyRateType,
-            resolve: fetchRates
+            resolve: fetchAllRates
         },
         ratesByBase: {
             type: CurrencyRateType,
@@ -21,7 +20,10 @@ const QueryType = new GraphQLObjectType({
         },
         ratesByMultiBase: {
             type: new GraphQLList(CurrencyRateType),
-            resolve: (root, args) => 
+            args: {
+                bases: { type: GraphQLString }
+            },
+            resolve: (root, args) => ratesLoader.load(`/latest?symbols=${args.bases}`)
         }
     })
 })

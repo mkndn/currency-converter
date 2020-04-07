@@ -13,13 +13,13 @@ const fetchResponse = (path: string) => {
     return fetch(`${BASE_URI}${path}`).then(res => res.json())
 }
 
-export const fetchRates = () => {
+export const fetchAllRates = () => {
     return fetchResponse("/latest").then(json => json.rate)
 }
 
-const fetchRatesByBase = (url: string) => {
+const fetchRates = (url: string) => {
     return fetchResponse(url).then(json => json.rate)
 }
 
 
-export const ratesLoader = new DataLoader<string, Array<any>>(urls => Promise.all(urls.map(fetchRatesByBase)));
+export const ratesLoader = new DataLoader<string, Array<any>>(urls => Promise.all(urls.map(fetchRates)));
